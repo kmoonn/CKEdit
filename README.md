@@ -1,6 +1,10 @@
 # CKEdit
 Controllable Knowledge Editing for LLM Content Safety
 
+## Framework
+
+- [EasyEdit](https://github.com/zjunlp/EasyEdit)
+
 ## Papers
 
 [2025](#2025) &nbsp;
