@@ -1,4 +1,5 @@
 # CKEdit
+
 Controllable Knowledge Editing for LLM Content Safety
 
 ## Framework
@@ -7,12 +8,15 @@ Controllable Knowledge Editing for LLM Content Safety
 
 ## Papers
 
-[2025](#2025) &nbsp;
-[2024](#2024) &nbsp;
+### Survey
 
-### 2025
+- [Knowledge Editing for Large Language Models: A Survey](https://dl.acm.org/doi/epdf/10.1145/3698590) ⭐⭐⭐
+- [A Comprehensive Study of Knowledge Editing for Large Language Models](https://arxiv.org/abs/2401.01286) ⭐⭐⭐
 
-|Topic(s) | Author(s)           | Title                                                                                                                                                                                                                                                                                                            | Venue                                                |
-| :------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |------- |
-| | Shi et al.        | [Safety Alignment via Constrained Knowledge Unlearning](https://aclanthology.org/2025.acl-long.1240/)       |       ACL  |   
-| | Li et al.           | [Editing as Unlearning: Are Knowledge Editing Methods Strong Baselines for Large Language Model Unlearning?](https://arxiv.org/abs/2505.19855)                                                                                                                                                                   |  arXiv                                                |
+### KE Methods
+
+- [Safety Alignment via Constrained Knowledge Unlearning](https://aclanthology.org/2025.acl-long.1240/)
+- [Editing as Unlearning: Are Knowledge Editing Methods Strong Baselines for Large Language Model Unlearning?](https://arxiv.org/abs/2505.19855)
+
+### FT Methods
+
