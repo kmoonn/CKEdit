@@ -370,10 +370,10 @@
   \whut@frow{论文作者}{\ifwhut@anonymous\else\whut@cauthor\fi}%
   % 指导教师：左标签纵向居中，右侧两行
   \whut@advrow{指导教师}%
-    {\ifwhut@anonymous\else 姓名\,\whut@ablank{6em}{\whut@cadvisor}职称\,\whut@ablank{6em}{\whut@advisortitle}学位\,\whut@ablank{4em}{\whut@advisordegree}\fi}%
+    {\ifwhut@anonymous\else 姓名\,\whut@ablank{4em}{\whut@cadvisor}职称\,\whut@ablank{6em}{\whut@advisortitle}学位\,\whut@ablank{3em}{\whut@advisordegree}\fi}%
     {单位名称\,\whut@ablank{12em}{\whut@advisordept}邮编\,\whut@ablank{5em}{\whut@advisorzip}}%
   \whut@advrow{副指导教师}%
-    {姓名\,\whut@ablank{6em}{\ifwhut@anonymous\else\whut@csubadvisor\fi}职称\,\whut@ablank{6em}{\whut@subadvisortitle}学位\,\whut@ablank{4em}{\whut@subadvisordegree}}%
+    {姓名\,\whut@ablank{4em}{\ifwhut@anonymous\else\whut@csubadvisor\fi}职称\,\whut@ablank{6em}{\whut@subadvisortitle}学位\,\whut@ablank{3em}{\whut@subadvisordegree}}%
     {单位名称\,\whut@ablank{12em}{\whut@subadvisordept}邮编\,\whut@ablank{5em}{\whut@subadvisorzip}}%
   \whut@frowtwo{申请学位级别}{\whut@degree}{学科专业名称}{\whut@cmajor}%
   \whut@frowtwo{论文提交日期}{\whut@submitdate}{论文答辩日期}{\whut@defenddate}%
