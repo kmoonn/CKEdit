@@ -3,14 +3,18 @@
 %%==============================================================================
 
 \begin{cabstract}
-以大语言模型为代表的生成式人工智能广泛部署，其生成内容的安全性问题日益突出。知识编辑通过定点修改模型参数实现有害知识的精准擦除，为内容安全治理提供了轻量且高效的新手段；然而，安全编辑在后续微调中会显著衰减，且现有方法以一刀切强度实施编辑，可靠性与可控性的双重缺陷制约了其实际应用。针对上述问题，本文围绕基于可控知识编辑的大语言模型生成内容安全开展研究，主要工作包括三个方面。
+以大语言模型为代表的生成式人工智能广泛部署，其生成内容的安全性问题日益突出。知识编辑通过定点修改模型参数实现有害知识的精准擦除，为内容安全治理提供了轻量且高效的新手段；然而，安全编辑在后续微调中会显著衰减，且现有方法以统一强度实施编辑，可靠性与可控性的双重缺陷制约了其实际应用。针对上述问题，本文围绕基于可控知识编辑的大语言模型生成内容安全开展研究，主要工作包括三个方面。
 
-其一，提出面向微调鲁棒性的可持久性安全编辑机制。建立覆盖良性微调与恶意微调的双威胁模型，实证刻画安全编辑的微调衰减现象，并通过正交补投影干预实验验证梯度投影衰减机理；在此基础上设计基于梯度正交约束的预加固编辑方法，以三重损失在编辑阶段建立对后续微调梯度的抵抗力，形成软锚定、硬锚定与预加固的方法谱系，并提出攻击回潮率、护栏完整度与新知识学习率三项评估指标。其二，提出面向多类别有害知识的分级可控编辑框架。利用因果追踪技术探测多类别有害知识的层级分布图谱，为分级提供实证依据；设计基于风险感知的连续强度调度方法，实现低危内容方向性衰减与高危内容彻底阻断的差异化编辑，并与持久性机制结合形成分级锚定，同时提出分级编辑精度与级间泄漏两项评估指标。其三，设计并开发了可控知识编辑内容安全防御系统，集成编辑管理、分级配置、持久监控与安全评估四大功能模块，对前两项研究内容进行系统化封装。
+（1）针对安全编辑在后续微调中失效且缺乏防御机制的问题，提出面向微调鲁棒性的可持久性安全编辑机制。建立覆盖良性微调与恶意微调的双威胁模型，实证刻画安全编辑的微调衰减现象，并通过正交补投影干预实验验证梯度投影衰减机理；在此基础上设计基于梯度正交约束的预加固编辑方法，以三重损失在编辑阶段建立对后续微调梯度的抵抗力，形成软锚定、硬锚定与预加固的方法谱系，并提出攻击回潮率、护栏完整度与新知识学习率三项评估指标。
+
+（2）针对统一编辑强度导致安全效用失衡与多类别有害知识覆盖不足的问题，提出面向多类别有害知识的分级可控编辑框架。利用因果追踪技术探测多类别有害知识的层级分布图谱，为分级提供实证依据；设计基于风险感知的连续强度调度方法，实现低危内容方向性衰减与高危内容彻底阻断的差异化编辑，并与持久性机制结合形成分级锚定，同时提出分级编辑精度与级间泄漏两项评估指标。
+
+（3）为将前两项研究成果转化为可用的安全治理工具，设计并开发了可控知识编辑内容安全防御系统。集成知识编辑管理、分级策略配置、持久监控与安全评估四大功能模块，对前两项研究内容进行系统化封装，形成从方法研究到工程落地的完整闭环。
 
 % ⚠️ TODO（实验完成后必改）：下段的实验结论目前为预期性定性表述——
 %    E2–E7 数据出来后，务必替换为定量结果（如"编辑保持率从 X% 提升至 Y%"），
 %    确保摘要与正文实验数据完全一致（盲审硬性要求）。
-在SafeEdit等基准上的实验表明：所提可持久性安全编辑机制在良性微调与恶意微调后均保持显著更高的编辑保持率，且不损害模型的通用能力与新知识学习；分级可控编辑框架在维持高危内容近完全阻断的同时，显著降低了一刀切编辑引发的过度拒绝，实现了更优的安全效用平衡。本文的研究为参数级知识编辑在内容安全场景的可靠应用提供了方法支撑与工具系统。
+在SafeEdit等基准上的实验表明：所提可持久性安全编辑机制在良性微调与恶意微调后均保持显著更高的编辑保持率，且不损害模型的通用能力与新知识学习；分级可控编辑框架在维持高危内容近完全阻断的同时，显著降低了统一强度编辑引发的过度拒绝，实现了更优的安全效用平衡。本文的研究为参数级知识编辑在内容安全场景的可靠应用提供了方法支撑与工具系统。
 
 \ckeywords{大语言模型；知识编辑；生成内容安全；微调鲁棒性；分级可控编辑}
 \end{cabstract}
@@ -18,7 +22,11 @@
 \begin{eabstract}
 With the widespread deployment of generative artificial intelligence represented by large language models (LLMs), the safety of generated content has become an increasingly prominent concern. Knowledge editing enables the precise erasure of harmful knowledge through targeted parameter modification, offering a lightweight and efficient approach to content safety governance. However, safety edits decay significantly under subsequent fine-tuning, and existing methods apply editing with uniform strength regardless of content risk levels. These deficiencies in reliability and controllability limit the practical application of knowledge editing in safety scenarios. This thesis investigates the safety of LLM-generated content based on controllable knowledge editing, with three main contributions.
 
-First, a persistent safety editing mechanism oriented to fine-tuning robustness is proposed. A dual-threat model covering both benign and malicious fine-tuning is established, the fine-tuning decay of safety edits is empirically characterized, and the gradient-projection decay mechanism is causally verified through orthogonal-complement intervention experiments. On this basis, a pre-hardened editing method with gradient orthogonality constraints is designed, which builds resistance to future fine-tuning gradients at the editing stage via a triple loss, forming a method spectrum of soft anchoring, hard anchoring, and pre-hardening, together with three evaluation metrics: attack resurgence rate, guardrail integrity, and new-knowledge learning rate. Second, a graded controllable editing framework for multi-category harmful knowledge is proposed. Causal tracing is employed to probe the layer-wise distribution of harmful knowledge across categories, providing empirical grounding for grading; a risk-aware continuous-strength scheduling method is designed to achieve differentiated editing, namely directional attenuation for low-risk content and complete blocking for high-risk content, and graded anchoring is formed by integrating the persistence mechanism, along with two new metrics: grading precision and inter-level leakage. Third, a controllable knowledge editing content safety defense system is designed and developed, integrating four functional modules of editing management, grading configuration, persistence monitoring, and safety evaluation.
+(1) To address the problem that safety edits fail after subsequent fine-tuning and lack defense mechanisms, a persistent safety editing mechanism oriented to fine-tuning robustness is proposed. A dual-threat model covering both benign and malicious fine-tuning is established, the fine-tuning decay of safety edits is empirically characterized, and the gradient-projection decay mechanism is causally verified through orthogonal-complement intervention experiments. On this basis, a pre-hardened editing method with gradient orthogonality constraints is designed, which builds resistance to future fine-tuning gradients at the editing stage via a triple loss, forming a method spectrum of soft anchoring, hard anchoring, and pre-hardening, together with three evaluation metrics: attack resurgence rate, guardrail integrity, and new-knowledge learning rate.
+
+(2) To address the safety-utility imbalance caused by uniform-strength editing and the insufficient coverage of multi-category harmful knowledge, a graded controllable editing framework is proposed. Causal tracing is employed to probe the layer-wise distribution of harmful knowledge across categories, providing empirical grounding for grading. A risk-aware continuous-strength scheduling method is designed to achieve differentiated editing, namely directional attenuation for low-risk content and complete blocking for high-risk content, and graded anchoring is formed by integrating the persistence mechanism, along with two new metrics: grading precision and inter-level leakage.
+
+(3) To translate the first two contributions into practical safety governance tooling, a controllable knowledge editing content safety defense system is designed and developed. It integrates four functional modules of editing management, grading configuration, persistence monitoring, and safety evaluation, systematically packaging the first two contributions and forming a complete loop from methodology to engineering deployment.
 
 Experiments on the SafeEdit benchmark show that the proposed persistent editing mechanism maintains substantially higher edit retention after both benign and malicious fine-tuning without degrading general capabilities or new-knowledge learning, and the graded controllable editing framework maintains near-complete blocking of high-risk content while significantly reducing the over-refusal induced by uniform-strength editing, achieving a superior safety-utility balance. This thesis provides methodological support and practical tooling for the reliable application of parameter-level knowledge editing in content safety scenarios.
 
