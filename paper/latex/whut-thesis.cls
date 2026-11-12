@@ -255,16 +255,6 @@
 %%------------------------------------------------------------------------------
 %% 10. 封面
 %%------------------------------------------------------------------------------
-% 封面题目：单行时居中；超长换行时各行（含末行）两端对齐满幅（分散对齐）
-\newlength{\whut@twi}
-\newcommand{\whut@covertitle}{%
-  \settowidth{\whut@twi}{\whut@ctitle}%
-  \ifdim\whut@twi>\textwidth
-    \leftskip\z@skip \rightskip\z@skip \parfillskip\z@skip
-    \noindent\whut@ctitle
-  \else
-    \whut@ctitle
-  \fi}
 \newcommand{\makecover}{%
   \begin{titlepage}
   \pagestyle{empty}
@@ -276,7 +266,7 @@
     \vspace{1.0cm}
     {\zihao{4}\songti （申请\whut@degree 专业学位论文）}\par
     \vspace{1.8cm}
-    {\zihao{2}\heiti \whut@covertitle\par}
+    {\zihao{2}\heiti \whut@ctitle\par}
     \vspace{0.6cm}
     {\zihao{3}\heiti （\whut@thesisform）\par}
     \vspace{2.4cm}
@@ -294,7 +284,7 @@
     \vspace*{1.5cm}
     {\zihao{4}\songti （申请\whut@discipline\whut@degree 学位论文）}\par
     \vspace{2.2cm}
-    {\zihao{2}\heiti \whut@covertitle\par}
+    {\zihao{2}\heiti \whut@ctitle\par}
     \vspace{3.5cm}
     {\zihao{4}\songti
       \begin{tabular}{@{}l@{\hspace{0.5em}}l@{}}
@@ -336,14 +326,6 @@
 \newcommand{\whut@frowtop}[2]{%
   \settowidth{\whut@lwi}{#1\,}%
   \noindent#1\,\parbox[t]{\dimexpr\textwidth-\whut@lwi\relax}{\raggedright #2}\whut@frowsep}
-% 题目整行：下划线满幅，值在下划线内两端对齐（分散撑满）
-\newcommand{\whut@frowsp}[2]{%
-  \settowidth{\whut@lwi}{#1\,}%
-  \noindent#1\,\underline{\makebox[\dimexpr\textwidth-\whut@lwi\relax][s]{#2}}\whut@frowsep}
-% 顶对齐整行（两端对齐版）：非末行两端对齐、末行左对齐，用于换行的英文题目
-\newcommand{\whut@frowjus}[2]{%
-  \settowidth{\whut@lwi}{#1\,}%
-  \noindent#1\,\parbox[t]{\dimexpr\textwidth-\whut@lwi\relax}{#2}\whut@frowsep}
 % 一行两组“标签+填空”：左右各占半幅
 \newcommand{\whut@frowtwo}[4]{%
   \settowidth{\whut@lwi}{#1\,}\settowidth{\whut@lwii}{#3\,}%
@@ -382,9 +364,9 @@
   \vspace{0.9cm}
   % ---- 表单主体（标签 + 下划线填空，无边框）----
   {\zihao{-4}\songti
-  \whut@frowsp{题\hspace{1em}目}{\whut@ctitle}%
-  % 英文题目：可换行，逐行下划线，两端对齐（先展开宏，使 ulem 能在词间断行）
-  \whut@frowjus{英文题目}{\expandafter\uline\expandafter{\whut@etitle}}%
+  \whut@frow{题\hspace{1em}目}{\whut@ctitle}%
+  % 英文题目：可换行，逐行下划线（先展开宏，使 ulem 能在词间断行）
+  \whut@frowtop{英文题目}{\expandafter\uline\expandafter{\whut@etitle}}%
   \whut@frow{论文作者}{\ifwhut@anonymous\else\whut@cauthor\fi}%
   % 指导教师：左标签纵向居中，右侧两行
   \whut@advrow{指导教师}%
