@@ -29,19 +29,19 @@
 
 \section{方案框架}
 
-\subsection{探测方法设计}
+\subsection{多类别有害知识层级探测方法设计}
 % TODO: 探测方法设计：暴力、违法建议、自残、偏见、越狱五类危害类别的逐层探测。
 
-\subsection{层级分布图谱}
+\subsection{有害知识的层级分布图谱}
 % TODO: 产出「危害类别 × 模型层」分布图谱；高低危分布差异检验——分级依据的实证发现。
 
-\subsection{连续强度调度}
+\subsection{基于风险感知的强度调度}
 % TODO: α(x) = sigmoid(f_risk(x))；L_edit = α·L_forget + (1-α)·L_retain。
 
-\subsection{差异化编辑策略}
+\subsection{基于风险分级的差异化编辑}
 % TODO: 低危方向性衰减（保留知识本体）；高危零空间擦除（借鉴 AlphaEdit 零干扰方向）。
 
-\subsection{分级锚定机制}
+\subsection{面向持久性的分级锚定机制}
 % TODO: 衔接第 2 章锚定机制：高危强锚定、低危弱锚定，CKEdit 框架在此汇合。
 
 \section{实验结果与分析}
@@ -75,7 +75,7 @@
 \subsection{分级精度与泄漏分析}
 % TODO: 两项自建指标——编辑是否恰好只影响目标风险等级；是否波及其他等级。
 
-\subsection{基线方法对比}
+\subsection{不同方法对比分析}
 % TODO: E3 ToxEdit 三线对比：toxicity 正面战 / 多类别扩展战 / 推理开销对比。
 
 \subsection{消融与敏感性分析}

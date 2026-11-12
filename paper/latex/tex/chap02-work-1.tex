@@ -26,10 +26,10 @@
 \subsection{参数级知识编辑范式}
 % TODO: ROME / MEMIT / AlphaEdit 的定位-编辑机制回顾，参数编辑范式的特点。
 
-\subsection{安全编辑问题定义}
+\subsection{问题定义}
 % TODO: 编辑对象、遗忘目标与约束条件的形式化定义。
 
-\subsection{双威胁模型}
+\subsection{威胁模型}
 % TODO: 良性微调与恶意微调双威胁设定；保持率 Retention(t)、攻击回潮率、护栏完整度的问题定义。
 
 \section{方案框架}
@@ -45,7 +45,7 @@
 \subsection{微调衰减现象}
 % TODO: E0–E2 衰减曲线族，双威胁模型下的现象观察（本章 motivation 图）。
 
-\subsection{梯度投影衰减机理}
+\subsection{基于梯度投影的衰减机理}
 % TODO: 梯度投影能量假设；正交补投影干预的因果验证。
 
 \subsection{方法总体框架}
@@ -54,7 +54,7 @@
 \subsection{梯度正交约束设计}
 % TODO: 代理微调梯度子空间估计；锚点一律取编辑后快照 θ_edit。
 
-\subsection{锚定方法谱系}
+\subsection{编辑锚定方法谱系}
 % TODO: 软锚定 / 硬锚定 / 预加固方法谱系；算法伪代码与复杂度分析。
 
 \section{实验结果与分析}
@@ -63,13 +63,13 @@
 % TODO: 数据集（SafeEdit、OR-Bench/XSTest、Alpaca/GSM8K/CodeAlpaca、去拒答对抗数据）；
 %       模型（Llama-2-7b-chat、Mistral-7B-Instruct）；基线与超参数设置。
 
-\subsection{编辑保持率分析}
+\subsection{编辑保持率对比分析}
 % TODO: E0–E2 基线衰减曲线 + E3–E5 定向锚定主结果 + E8 ILU 范式对比。
 
 \subsection{消融实验}
 % TODO: E6 软硬锚定谱系对比；E7 定向加权 vs 均匀正则消融。
 
-\subsection{能力影响分析}
+\subsection{通用能力影响分析}
 % TODO: 过度拒绝率、MMLU、新知识学习率——证明锚定不阻碍微调学习新知识。
 
 \section{本章小结}
