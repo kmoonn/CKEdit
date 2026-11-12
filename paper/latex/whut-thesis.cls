@@ -306,6 +306,15 @@
 %%------------------------------------------------------------------------------
 % 下划线填空：#1=下划线宽度，#2=内容（居中置于线上）
 \newcommand{\whut@blank}[2]{\underline{\makebox[#1][c]{#2}}}
+% 自适应下划线填空：下划线宽度至少为 #1，内容过宽时随内容自动加宽（导师字段用）
+\newlength{\whut@bw}
+\newcommand{\whut@ablank}[2]{%
+  \settowidth{\whut@bw}{#2}%
+  \ifdim\whut@bw>#1\relax
+    \underline{\makebox[\dimexpr\whut@bw+1em\relax][c]{#2}}%
+  \else
+    \underline{\makebox[#1][c]{#2}}%
+  \fi}
 % 行间距与测量用临时长度（题名页较密，使整页含日期单页排下）
 \newcommand{\whut@frowsep}{\par\vspace{0.65em}}
 \newlength{\whut@lwi}\newlength{\whut@lwii}
@@ -361,11 +370,11 @@
   \whut@frow{论文作者}{\ifwhut@anonymous\else\whut@cauthor\fi}%
   % 指导教师：左标签纵向居中，右侧两行
   \whut@advrow{指导教师}%
-    {\ifwhut@anonymous\else 姓名\,\whut@blank{6em}{\whut@cadvisor}职称\,\whut@blank{4em}{\whut@advisortitle}学位\,\whut@blank{4em}{\whut@advisordegree}\fi}%
-    {单位名称\,\whut@blank{9em}{\whut@advisordept}邮编\,\whut@blank{5em}{\whut@advisorzip}}%
+    {\ifwhut@anonymous\else 姓名\,\whut@ablank{6em}{\whut@cadvisor}职称\,\whut@ablank{6em}{\whut@advisortitle}学位\,\whut@ablank{4em}{\whut@advisordegree}\fi}%
+    {单位名称\,\whut@ablank{12em}{\whut@advisordept}邮编\,\whut@ablank{5em}{\whut@advisorzip}}%
   \whut@advrow{副指导教师}%
-    {姓名\,\whut@blank{6em}{\ifwhut@anonymous\else\whut@csubadvisor\fi}职称\,\whut@blank{4em}{\whut@subadvisortitle}学位\,\whut@blank{4em}{\whut@subadvisordegree}}%
-    {单位名称\,\whut@blank{9em}{\whut@subadvisordept}邮编\,\whut@blank{5em}{\whut@subadvisorzip}}%
+    {姓名\,\whut@ablank{6em}{\ifwhut@anonymous\else\whut@csubadvisor\fi}职称\,\whut@ablank{6em}{\whut@subadvisortitle}学位\,\whut@ablank{4em}{\whut@subadvisordegree}}%
+    {单位名称\,\whut@ablank{12em}{\whut@subadvisordept}邮编\,\whut@ablank{5em}{\whut@subadvisorzip}}%
   \whut@frowtwo{申请学位级别}{\whut@degree}{学科专业名称}{\whut@cmajor}%
   \whut@frowtwo{论文提交日期}{\whut@submitdate}{论文答辩日期}{\whut@defenddate}%
   \whut@frowtwo{学位授予单位}{\whut@cuniversity}{学位授予日期}{}%
