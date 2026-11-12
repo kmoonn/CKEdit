@@ -110,7 +110,7 @@
 \ifwhut@doctor
   \def\whut@degree{博士}
 \else
-  \def\whut@degree{硕士}
+  \def\whut@degree{电子信息硕士}
 \fi
 % 页眉文字：武汉理工大学{硕士/博士}学位论文
 \def\whut@headtext{武汉理工大学\whut@degree 学位论文}
