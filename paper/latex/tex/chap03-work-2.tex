@@ -21,30 +21,30 @@
   \end{tabular}
 \end{table}
 
-\subsection{一刀切编辑的过度拒绝问题}
+\subsection{过度拒绝问题}
 % TODO: 一刀切编辑的现象与例证，安全-效用失衡分析。
 
-\subsection{分级可控编辑的形式化定义}
+\subsection{分级编辑形式化定义}
 % TODO: 编辑强度作为内容风险函数的形式化定义；分级映射可替换设计。
 
-\subsection{因果追踪与激活修补技术}
+\subsection{因果追踪技术}
 % TODO: activation patching / causal tracing 原理与流程（为 3.2 探测做预备）。
 
 \section{方案框架}
 
-\subsection{多类别有害知识层级分布探测}
+\subsection{探测方法设计}
 % TODO: 探测方法设计：暴力、违法建议、自残、偏见、越狱五类危害类别的逐层探测。
 
-\subsection{危害类别与模型层分布图谱}
+\subsection{层级分布图谱}
 % TODO: 产出「危害类别 × 模型层」分布图谱；高低危分布差异检验——分级依据的实证发现。
 
-\subsection{风险感知的连续强度调度}
+\subsection{连续强度调度}
 % TODO: α(x) = sigmoid(f_risk(x))；L_edit = α·L_forget + (1-α)·L_retain。
 
-\subsection{软硬差异化编辑实现}
+\subsection{差异化编辑策略}
 % TODO: 低危方向性衰减（保留知识本体）；高危零空间擦除（借鉴 AlphaEdit 零干扰方向）。
 
-\subsection{分级锚定与框架整合}
+\subsection{分级锚定机制}
 % TODO: 衔接第 2 章锚定机制：高危强锚定、低危弱锚定，CKEdit 框架在此汇合。
 
 \section{实验结果与分析}
@@ -72,13 +72,13 @@
 \subsection{实验设置}
 % TODO: 数据集与分级映射（SafeEdit 九类映射三级）；模型；基线（ToxEdit、统一强度）。
 
-\subsection{安全效用平衡主结果分析}
+\subsection{安全效用平衡分析}
 % TODO: E1/E2/E4：攻击成功率 + 过度拒绝率 + 分层安全效用 Pareto 曲线。
 
-\subsection{分级编辑精度与跨级泄漏分析}
+\subsection{分级精度与泄漏分析}
 % TODO: 两项自建指标——编辑是否恰好只影响目标风险等级；是否波及其他等级。
 
-\subsection{与推理时干预方法对比}
+\subsection{基线方法对比}
 % TODO: E3 ToxEdit 三线对比：toxicity 正面战 / 多类别扩展战 / 推理开销对比。
 
 \subsection{消融与敏感性分析}
